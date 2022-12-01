@@ -132,6 +132,10 @@ router.post("/verifyOTP", async (req, res) => {
       await user.save();
       return res.json({
         message: "OTP verified successfully",
+        user: {
+          id: user._id,
+          isFirstLogin: user.isFirstLogin,
+        },
       });
     }
   } catch (error) {
